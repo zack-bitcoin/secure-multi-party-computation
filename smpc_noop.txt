@@ -1,0 +1,19 @@
+This is a step by step example of how you can apply the encryption twice, and then take off encryption in either order
+
+example noop secret=1
+p1: (1 2)
+p2: (2 3)
+
+to poly
+p1: (1 3) (2 4)
+p2: (1 2) (2 1)
+
+exchange
+p1: (1 3) (2 2)
+p2: (1 4) (2 1)
+
+solve
+p1 (1 4)
+p2 (2 7)
+
+secret is still=1

@@ -1,0 +1,43 @@
+SMPC calculations: secrets are stored on x-axis.
+
+example of addition 2+3=5
+secretA = 3
+secretB = 2
+Peer1 knows: A=(1, 4) B=(1, 2) 
+Peer2 knows: A=(2, 5) B=(2, 2)
+
+Peer1 calculates C=A+B=(1, 6)
+Peer2 calculates C=A+B=(2, 7)
+
+C = 5
+
+example of multiplication 2*3=6
+#if secrets are stored in order n polynomials, then we need at least 2n-1 peers. Otherwise we cannot store the higher-order polynomial before we reduce.
+secretA = 3
+secretB = 2
+Peer1 knows: A=(1, 4) B=(1, 3)
+Peer2 knows: A=(2, 5) B=(2, 4)
+Peer3 knows: A=(3, 6) B=(3, 5)
+
+Peers generate polynomials where C(0)=A*B. They need 2n-1 points, because the polynomial accross peers is higher-order now.
+Peer1 generates polynomial for C=A*B=12
+(1, 13) (2, 14) (3, 15)
+
+Peer2 generates polynomial for C=A*B=20
+(1, 21) (2, 22) (3, 23)
+
+Peer3 generates polynomial for C=A*B=30
+(1, 31) (2, 32) (3, 33)
+
+Next step decreases order of polynomial:
+They send shares to each other. They have 2n-1 points on a polynomial that is order n.
+Peer1 knows: 
+      (1, 13) (2, 21) (3, 31) -> C = (1, 7)
+
+Peer2 knows: 
+      (1, 14) (2, 22) (3, 32) -> C = (2, 8)
+
+Peer3 knows:
+      (1, 15) (2, 23) (3, 33) -> C = (3, 9)
+
+If they solved worked together to solve for C: 6
